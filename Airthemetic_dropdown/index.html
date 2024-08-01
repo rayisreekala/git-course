@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Arithmetic operations </title>
+    <style>
+        form{
+            text-align: center;
+        }
+        select{
+            border: none;
+            background-color:rgb(15, 122, 158);
+            color: white;
+            width: 150px;
+            height: 30px;
+            margin-top: 30px;
+        }
+        button{
+            color: turquoise;
+            font-weight: bold;
+            background-color: white;
+            /* border-radius: 2px; */
+        }
+    </style>
+</head>
+<body>
+    <h3 style="text-align: center;">Please select required button to get the respective Arithmetic
+         Operation of any n numbers. <br>Happy solving.</h3> <br>
+    <form action="" onsubmit="return getdata();">
+        <label name="number1">Num1</label>
+        <input type="text" id="a"> <br> <br>
+        <label name="number2" >Num2</label>
+        <input type="text" id="b"> <br> <br>
+        <select name="selected" id="op">
+            <option value="add">+ Addition</option>
+            <option value="sub">- Subtraction</option>
+            <option value="div">/ Division</option>
+            <option value="mul">* Multiplication</option>
+            <option value="mod">% Modulo</option>
+        </select> <br> <br>
+        <button  type="submit" >Submit</button>
+    </form>
+    
+</body>
+<script>
+    function getdata(){ 
+        var a=parseFloat(document.getElementById("a").value);
+        var b=parseFloat(document.getElementById("b").value);
+        var sel=document.getElementById("op").value;
+
+        if(sel=="add"){
+        alert("The Addition of given two numbers: "+(a+b));
+        }
+        else if(sel=="sub")  {  
+        alert("The subtraction of given two numbers: "+(a-b));
+        }
+        else if(sel=="div")    {
+        alert("The division of given two numbers: "+(a/b));
+        }
+        else if(sel=="mul")    {
+        document.write("The Multiplication of given two numbers: "+(a*b));
+        }
+        else if(sel=="mod")    {
+        alert("The Modulo of given two numbers: "+(a%b));
+
+        // document.write("It actually displays the content in another tab or else we can say it overrides the content with in the same page")
+        }
+    }
+    
+    
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+        button {
+            background-color: rgb(15, 122, 158);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(12, 98, 126);
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return calculate();">
+        <h3>Arithmetic Operations</h3>
+        <label for="num1">Num1:</label>
+        <input type="number" id="num1" required> <br> <br>
+        <label for="num2">Num2:</label>
+        <input type="number" id="num2" required> <br> <br>
+        <select id="operation">
+            <option value="add">+ Addition</option>
+            <option value="sub">- Subtraction</option>
+            <option value="div">/ Division</option>
+            <option value="mul">* Multiplication</option>
+            <option value="mod">% Modulo</option>
+        </select> <br> <br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var operation = document.getElementById("operation").value;
+            var result;
+
+            if (operation == "add") {
+                result = num1 + num2;
+            } else if (operation == "sub") {
+                result = num1 - num2;
+            } else if (operation == "div") {
+                result = num1 / num2;
+            } else if (operation == "mul") {
+                result = num1 * num2;
+            } else if (operation == "mod") {
+                result = num1 % num2;
+            }
+
+            alert("The result of the operation is: " + result);
+            return false; // Prevent form submission and page reload
+        }
+    </script>
+</body>
+</html>

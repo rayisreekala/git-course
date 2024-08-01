@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    /* form {
+        margin-top: 30px;
+        margin-left: 200px;
+        margin-right: 200px;
+
+    } */
+    body{
+        /* margin-left: 200px; */
+        /* margin-right: 300px; */
+    }
+    hr {
+        color: lightgray;
+        height: 0.1px;
+        /* border: none; */
+
+    }
+    .dis {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        /* height: 100vh; */
+        margin-top: 50px;
+        margin-left: 100px;
+        margin-right: 100px;
+
+    }
+    .flex-container{
+        flex: 1;
+        gap: 20px;
+    }
+    .form-container label {
+            flex: 1; /* Distribute space equally between labels */
+            text-align: right; /* Align labels to the right */
+            padding-right: 10px; /* Optional: Adjust label spacing */
+        }
+        .form-container input,
+        .form-container select {
+            flex: 2; /* Take more space for inputs */
+            padding: 8px; /* Adjust padding for inputs */
+            box-sizing: border-box; /* Include padding in width */
+            border: 1px solid #ccc; /* Optional: Add border */
+            border-radius: 4px; /* Optional: Add border radius */
+        }
+.formstyle{
+    border: none;
+    width: 700px;
+    padding: 30px;
+    background-color: #f0f0f0;
+    /* border: 1px solid #ccc; */
+    /* box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5); */
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            border-radius: 10px;
+}
+    .space {
+        /* padding:10px; */
+        /* margin-left: 5px; */
+        gap: 5px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance class Registration Form</title>
+</head>
+
+<body>
+    <!-- <form > -->
+    <h2 style="text-align: center;"> Dance Class Registration Form</h2>
+    <div class="dis">
+
+        <img src="dance.png" width="500" height="400">
+        <div>
+            <h4> About this dance class:</h4>
+            <p>Starts from:</p>
+            <p>Date: May 27, 2024 <br>
+            <p>Timings: 9:00 AM - 1:00 PM</p>
+            </p>
+            <p>This dacne class going to be your best dance class ever you have registered. You can have different
+                styles of dance like classical, western etc..
+                Hope you dont miss this chance. Take 5 minutes of your time to fill out the details of yours and to get
+                more clarity about this dacne class. Go head !!!. All the best. I hope we gonna meet in the dance class.
+                Bye.
+            </p>
+        </div>
+        <hr>
+    </div>
+    <!-- <h1>Sreekakla</h1> -->
+    <form id="refresh" onsubmit="return ValidateForm()" class="formstyle">
+        
+        <label name="id">Participation Id</label>
+        <input type="text" id="ParticipationId" onblur=" ValidateParticipationId()"> <br><br>
+
+        <label name="Name">Name</label> <br><br>
+        <div class="space">
+            <input type="text" placeholder="firstname" id="namevalidation1" onblur="ValidateFName()">
+            <input type="text" placeholder="middlename" id="namevalidation2" onblur="ValidateMName()">
+            <input type="text" placeholder="lastname" id="namevalidation3" onblur="ValidateLName()">
+        </div> <br>
+
+        <div class="flex-container">
+        <label name="age">Age</label> <br><br>
+        <input type="number"> <br><br>
+
+        <label name="gender">Gender</label><br><br>
+        <input type="radio" name="gender" id="female" value="female">Female
+        <input type="radio" name="gender" id="male" value="male">Male
+        <input type="radio" name="gender" id="other" value="other">Other <br><br>
+    </div>
+
+        <label name="email">Email</label><br><br>
+        <input type="" name="email" id="emailvalidation" onblur="ValidateEmail()"><br><br>
+
+        <label name="uname">Username</label><br><br>
+        <input type="" name="email" id="unameValidaiton" onblur="ValidateUname()"><br><br>
+
+        <label name="pawd">Password</label><br><br>
+        <input type="password" name="email" id="passwordValidation" onblur="ValidatePaswd()"><br><br>
+
+        <label name="phone">Phone</label><br><br>
+        <input type="" name="phone" id="phonevalidation" onblur="ValidatePhone()"><br><br>
+
+        <label for="phone">Address</label><br><br>
+        <textarea rows="4" cols="50" placeholder="Address..." id="addressValidation"
+            onblur="ValidateAddress()"></textarea><br><br>
+
+        <label name="phone">Intrests</label><br><br>
+        <textarea rows="4" cols="50" placeholder="Your intrests..." id="intrestsValidate"
+            onblur="ValidateIntrests()"></textarea><br><br>
+
+        <button type="submit" id="submit" onclick="submitForm()">Submit</button>
+
+    </form>
+
+</body>
+<script>
+    function ValidateParticipationId() {
+        var pid = document.getElementById('ParticipationId').value;
+        var regex=/^[0-9]{4}$/.test(pid);
+        if(!regex)
+        {
+            alert("Participation id should be exactly 4 digits long.");
+            return false;
+        }       
+        // if (pid.length == 0) {
+        //     alert("Please fill out the participation Id");
+        //     return false;
+
+        // }
+        // else if (pid.length < 4 || pid.length > 4) {
+        //     alert("Participation Id should be 4 characters long only..");
+        //     return false;
+        // }
+        return true;
+
+    }
+    function ValidateFName() {
+        var name = document.getElementById('namevalidation1').value;
+        var regex = /[a-zA-Z]{3,30}$/.test(name);
+        if (!regex) {
+            alert("Please fill firstname with alphabates and should contain atleast 3-30 characters.");
+            return false;
+        }
+        return true;
+    }
+    function ValidateMName() {
+        var name = document.getElementById('namevalidation2').value;
+        var regex = /[a-zA-Z]{0,30}$/.test(name);
+        if (!regex) {
+            alert("Please fill middlename with alphabates and should contain atleast 3-30 characters.");
+            return false;
+        }
+        return true;
+    }
+    function ValidateLName() {
+        var name = document.getElementById('namevalidation3').value;
+        var regex = /[a-zA-Z]{3,30}$/.test(name);
+        if (!regex) {
+            alert("Please fill Lastname it with alphabates and should contain atleast 3-30 characters.");
+            return false;
+        }
+        return true;
+
+
+    }
+
+    function ValidateGender() {
+        var female = document.getElementById('female').checked;
+        var male = document.getElementById('male').checked;
+        var other = document.getElementById('other').checked;
+
+        if (!female && !male && !other) {
+            alert("Please select a gender.");
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission if validation passes
+    }
+
+    function ValidateEmail() {
+        var pid = document.getElementById('emailvalidation').value;
+        if (pid.length == 0) {
+            alert("Please fill out the Email Id");
+            return false;
+        }
+        else if (!pid.endsWith('@gmail.com')) {
+            alert("Your email should endswith @gmail.com");
+            return false;
+        }
+        else if (/[A-Z]/.test(pid)) {
+            alert("Email should not contain capital letters");
+            return false;
+        }
+        return true;
+
+    }
+    function ValidateUname() {
+        var uname = document.getElementById('unameValidaiton').value;
+        var regex = /^[A-Z][a-zA-Z]{7,10}$/.test(uname);
+        if (!regex) {
+            alert("Please start with Capital letter and username contains atleast 7-10 characters.");
+            return false;
+        }
+        return true;
+    }
+
+    function ValidatePaswd() {
+
+        var pawd = document.getElementById('passwordValidation').value;
+        var regex = /^[A-Z][a-zA-Z0-9!@#$%^&*()-_+=\[\]|{};':"\\.,<>?/]{7}$/.test(pawd);
+        // var alphanumeric = /^[A-Z][regex][a-zA-Z0-9]$/.test(pawd);
+        // if (pawd.length == 0) {
+        //     alert("Please set your passowrd"); 
+        
+        
+        //     return false;
+        // }
+        // if (!/^[A-Z]/.test(pawd)) {
+        //     alert("Password should starts with a Capital letter and should contain 8 digits.");
+        //     return false;
+        // }
+         if (!regex) {
+            alert("Please start wtih Capital letter followed by any special symbol or alphabets of size exactly 8 characters to make your password strong");
+            return false;
+        }
+        // else if (!alphanumeric) {
+        //     alert("Please include  any alphanumeric values to make your passowrd strong");
+        //     return false;
+        // }
+        return true;
+    }
+
+    function ValidatePhone() {
+        var ph = document.getElementById('phonevalidation').value;
+        var regex = /[0-9]{10}$/.test(ph);
+
+        if (ph.length == 0) {
+            alert("Please fill out your contact number");
+            return false;
+        }
+        else if (!regex) {
+            alert("Contact number should only contain numbers/ digits(0-9) exaclty with 10 digits");
+            return false;
+        }
+        return true;
+    }
+    
+    function ValidateAddress() {
+        var text = document.getElementById('addressValidation').value;
+        // var regex = /[a-zA-Z0-9!@#$%^&*()-_+=\[\]|{};':"\\.,<>?/]{5,400}$/.test(text);
+        if (text.length>50 || text.length<150) {
+            alert("Please include the detailed address of your's home ");
+            return false;
+        }
+        return true;
+    }
+    function ValidateIntrests() {
+        var text = document.getElementById('intrestsValidate').value;
+        var regex = /[a-zA-Z0-9!@#$%^&*()-_+=\[\]|{};':"\\.,<>?/]{50,150}$/.test(text);
+        if (!regex) {
+            alert("Please include the detailed intrests of your's in 50-150 characters");
+            return false;
+        }
+        return true;
+    }
+
+    function ValidateForm() {
+        var isValid = true;
+
+        if (true || !ValidateParticipationId()|| !ValidateFName() || !ValidateMName() || !ValidateLName()
+            || !ValidateGender() || !ValidateEmail() || !ValidateUname() || !ValidatePaswd() ||
+            !ValidatePhone() || !ValidateAddress() || !ValidateIntrests())
+            isValid = false;
+        if (isValid)
+            alert("Sucessfully submited !!!");
+        else {
+            alert("Please fill the form properly..");
+        }
+
+    }
+
+    function clear() {
+        document.getElementById('refresh').reset();
+    }
+    // window.onload = clear();
+
+</script>
+
+</html>

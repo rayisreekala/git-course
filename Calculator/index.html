@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .box{
+        border:none;
+        background-color: burlywood;
+        width:400px;
+        height:500px;
+        margin-left: 400px;
+        margin-top: 80px;
+        border-radius: 25px;
+        }
+        .box2{
+            background-color: rgb(133, 130, 130);
+            width: 350px;
+            height: 100px;
+            z-index:1;
+            margin-left:430px;
+            margin-top: 100px;
+        }
+        button{
+            border: none;
+            border-radius: 5px;
+            width: 30px;
+
+        }
+        .arrange{
+            /* display: flex; */
+            /* gap: 20px; */
+            padding: 5px;
+            margin: 30px;
+            /* border: none; */
+            
+          
+        }
+        .equal{
+            height: 180px;
+        }
+        .dir{
+            display: flex;
+            padding: 20px;
+            /* margin-top: 40px; */
+            flex-direction: column;
+        }
+       
+    </style>
+</head>
+<body>
+    <p class="box"></p>
+    <p class="box2" id="enter"></p>
+    <div id="screen">0</div>
+    <div class="arrange">
+    <button onclick="inputOperator('+')">+</button>
+    <button onclick="inputOperator('-')">-</button>
+    <button onclick="inputOperator('*')">*</button>
+    <button onclick="inputOperator('/')">/</button>
+    <!-- <button onclick="inputOperator('%')">%</button> -->
+    </div>
+
+<div class="arrange">
+    <button onclick="inputDigit('1')">1</button>
+    <button onclick="inputDigit('2')">2</button>
+    <button onclick="inputDigit('3')">3</button>
+    <button onclick="Clearscreen()">CE</button> 
+    <!-- <div class="equal"> -->
+    
+    </div>
+</div>
+
+
+<div class="arrange">
+
+    <button onclick="inputDigit('4')">4</button>
+    <button onclick="inputDigit('5')">5</button>
+    <button onclick="inputDigit('6')">6</button>
+    <button onclick="inputDigit('|')">|</button>
+    <!-- <button onclick="calculate()">=</button> -->
+
+</div>
+
+<div class="arrange">
+
+    <button onclick="inputDigit('7')">7</button>
+    <button onclick="inputDigit('8')">8</button>
+    <button onclick="inputDigit('9')">9</button>
+    <button onclick="inputDigit('OFF')">OFF</button>
+    <!-- <button onclick="calculate()">=</button> -->
+</div>
+
+<div class="arrange">
+    <button onclick="inputDigit('0')">0</button>
+    <button onclick="inputDigit('.')">.</button>
+    <button onclick="inputOperator('^')">^</button>
+    <button onclick="inputOn('ON')">ON</button>
+    <!-- <button onclick="calculate()">=</button> -->
+
+    </div>
+    <div class="dir">
+        <button onclick="inputOperator('%')">%</button>
+        <button onclick="calculate() " class="equal">=</button>
+</div>
+</div>
+
+
+    
+
+</body>
+<script>
+    let operator='';
+    let operand1='';
+    let operand2='';
+    let currentInput='';
+
+    function inputDigit(digit){
+        if(operator==='')
+        operand1+=digit;
+    else
+    operand2+=digit;
+    currentInput+=digit;
+    updateScreen();
+    }
+
+    function updateScreen()
+    {
+        document.getElementById('screen').innerText=currentInput;
+    }
+
+    function inputOperator(op) {
+            if (operand1 === '') return; // Prevent operator input if no operand1
+            if (operator !== '') return; // Prevent multiple operators
+            operator = op;
+            currentInput += ' ' + op + ' ';
+            updateScreen();
+    }
+function inputOn()
+{
+    document.getElementById('screen').innerHTML='0';
+    
+
+}
+    
+    function calculate()
+    {
+        if(operand1==='' || operand2==='' || operator==='') return;
+        let result;
+        
+        switch(operator)
+        {
+            case '+':
+            result=parseFloat(operand1)+parseFloat(operand2);
+            break;
+            case '-':
+            result=parseFloat(operand1)-parseFloat(operand2);
+            break;   
+            case '*':
+            result=parseFloat(operand1)*parseFloat(operand2);
+            break;
+            case '/':
+            result=parseFloat(operand1)/parseFloat(operand2);
+            break;
+            case '%':
+            result=parseFloat(operand1)%parseFloat(operand2);
+            break;
+            case '^':
+            result=parseFloat(operand1)^parseFloat(operand2);
+            break;
+            
+        }
+        document.getElementById('screen').innerText = result;
+            operand1 = result.toString();
+            operator = '';
+            operand2 = '';
+            currentInput = result.toString();
+    }
+    function Clearscreen()
+    {
+        currentInput='';
+        operand1='';
+        operand2='';
+        operator='';
+        updateScreen();
+    }
+    
+</script>
+</html>
